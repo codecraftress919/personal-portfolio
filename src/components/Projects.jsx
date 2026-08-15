@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Github,
+  X,
+  Expand,
+} from "lucide-react";
 import { projects } from "../data/projects";
 
-function ProjectCard({ project, index, activeIndex, onDragEnd }) {
+function ProjectCard({ project, index, activeIndex, onDragEnd, onOpen }) {
   const depth = (index - activeIndex + projects.length) % projects.length;
   const isTop = depth === 0;
   const stack = [
@@ -29,6 +36,7 @@ function ProjectCard({ project, index, activeIndex, onDragEnd }) {
       dragElastic={0.8}
       whileDrag={{ scale: 1.04, rotate: 6 }}
       onDragEnd={isTop ? onDragEnd : undefined}
+      onTap={isTop ? () => onOpen(project) : undefined}
       style={{ zIndex: projects.length - depth }}
     >
       <div
@@ -37,6 +45,11 @@ function ProjectCard({ project, index, activeIndex, onDragEnd }) {
       >
         <span>PROJECT {project.id}</span>
         <span>{project.category}</span>
+        {isTop && (
+          <div className="card-view-hint">
+            <Expand size={12} /> VIEW DETAILS
+          </div>
+        )}
       </div>
       <div className="card-bottom">
         <h3>{project.title}</h3>
@@ -50,8 +63,118 @@ function ProjectCard({ project, index, activeIndex, onDragEnd }) {
   );
 }
 
+function ProjectModal({ project, onClose }) {
+  const [activeImage, setActiveImage] = useState(0);
+
+  if (!project) return null;
+
+  const images =
+    project.detailImages && project.detailImages.length
+      ? project.detailImages
+      : [project.image];
+
+  const nextImage = () =>
+    setActiveImage((i) => (i + 1) % images.length);
+  const prevImage = () =>
+    setActiveImage((i) => (i - 1 + images.length) % images.length);
+
+  return (
+    <motion.div
+      className="modal-overlay"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="modal-content"
+        initial={{ opacity: 0, y: 40, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 20, scale: 0.97 }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="modal-close" onClick={onClose} aria-label="Close">
+          <X size={18} />
+        </button>
+
+        <div className="modal-gallery">
+          <div
+            className="modal-gallery-image"
+            style={{ backgroundImage: `url(${images[activeImage]})` }}
+          />
+          {images.length > 1 && (
+            <>
+              <button
+                className="modal-gallery-nav modal-gallery-prev"
+                onClick={prevImage}
+                aria-label="Previous image"
+              >
+                <ArrowLeft size={16} />
+              </button>
+              <button
+                className="modal-gallery-nav modal-gallery-next"
+                onClick={nextImage}
+                aria-label="Next image"
+              >
+                <ArrowRight size={16} />
+              </button>
+              <div className="modal-gallery-dots">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`modal-gallery-dot ${
+                      i === activeImage ? "active" : ""
+                    }`}
+                    onClick={() => setActiveImage(i)}
+                    aria-label={`Show image ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="modal-body">
+          <span className="project-number">PROJECT {project.id}</span>
+          <h3>{project.title}</h3>
+          <p className="modal-category">{project.category}</p>
+          <p>{project.description}</p>
+
+          <div className="detail-tags">
+            {project.technologies.map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
+
+          <div className="project-actions">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="link"
+            >
+              <Github size={16} /> GitHub
+            </a>
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="link"
+            >
+              Live Demo <ArrowUpRight size={16} />
+            </a>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function Projects() {
   const [active, setActive] = useState(0);
+  const [openProject, setOpenProject] = useState(null);
   const project = projects[active];
 
   const move = (direction) =>
@@ -71,7 +194,7 @@ export default function Projects() {
           FEATURED <br />
           <em>PROJECTS.</em>
         </h2>
-        <p>Drag or navigate through selected work.</p>
+        <p>Drag or tap a card to explore.</p>
       </div>
 
       <div className="project-stage">
@@ -83,6 +206,7 @@ export default function Projects() {
               index={i}
               activeIndex={active}
               onDragEnd={onDragEnd}
+              onOpen={setOpenProject}
             />
           ))}
           <div className="swipe-hint">
@@ -124,6 +248,13 @@ export default function Projects() {
                 >
                   Live Demo <ArrowUpRight size={16} />
                 </a>
+                <button
+                  className="btn-view-details"
+                  onClick={() => setOpenProject(project)}
+                  data-cursor="link"
+                >
+                  <Expand size={14} /> View Details
+                </button>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -142,6 +273,15 @@ export default function Projects() {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {openProject && (
+          <ProjectModal
+            project={openProject}
+            onClose={() => setOpenProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

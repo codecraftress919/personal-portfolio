@@ -28,7 +28,7 @@ export default function Navbar({ activeSection }) {
         data-cursor="link"
         aria-label="Home"
       >
-        <span>B</span>
+        <span>SS</span>
       </a>
 
       {/* Center Navigation */}

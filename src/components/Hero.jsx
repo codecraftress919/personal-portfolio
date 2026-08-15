@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import myPic from "../assets/my-pic.png";
 
+
 export default function Hero() {
   const socialLinks = [
     {
@@ -63,7 +64,7 @@ export default function Hero() {
           <p className="hero-description">
             BS Computer Science graduate and software developer passionate about building modern, responsive, and user-focused web and mobile applications with React, React Native, Node.js, and MongoDB.
           </p>
-          
+
         </motion.div>
 
         {/* Center Column: Portrait Avatar & Ambient Purple Spotlight Glow */}
@@ -112,8 +113,8 @@ export default function Hero() {
             I'm a software developer with hands-on experience building full-stack web and mobile applications. I enjoy turning ideas into clean, functional, and visually engaging digital experiences using modern technologies.</p>
           <div className="hero-btn-group">
             <a
-              href="/cv.pdf"
-              download
+              href="public/sadia-cv.pdf"
+              download="Sadia Sultana CV.pdf"
               className="btn-glow-solid"
               data-cursor="link"
             >

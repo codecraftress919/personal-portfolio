@@ -25,7 +25,7 @@ export default function Contact() {
       </h2>
 
       <motion.a
-        href="mailto:sadia.sultana@example.com"
+        href="mailto:ssdev902@gmail.com"
         className="contact-circle-btn"
         data-cursor="link"
         style={{ x, y }}
@@ -45,10 +45,10 @@ export default function Contact() {
 
       <a
         className="email-link"
-        href="mailto:sadia.sultana@example.com"
+        href="mailto:ssdev902@gmail.com"
         data-cursor="link"
       >
-        <Mail size={16} /> sadia.sultana@example.com
+        <Mail size={16} /> ssdev902@gmail.com
       </a>
 
       <footer>

@@ -132,7 +132,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 0.4 }}
       >
         <span className="copyright-text">
-          @2026 Sadia all right reserved
+          
         </span>
 
         <div className="social-pill-group">

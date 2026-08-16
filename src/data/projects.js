@@ -45,11 +45,15 @@ export const projects = [
     description:
       "Smart agriculture monitoring platform combining remote sensing, AI/ML insights and a React Native experience for data-driven farming decisions. Designed a scalable backend with data pipelines feeding real-time dashboards and role-based authentication for farmers, researchers, and administrators.",
     technologies: ["React Native", "Node.js", "Express", "MongoDB", "AI/ML"],
-    image: "/projects/nigheban.jpg",
+    image: "/src/assets/nigheban/1.jpeg",
     detailImages: [
-      "/projects/nigheban-1.jpg",
-      "/projects/nigheban-2.jpg",
-      "/projects/nigheban-3.jpg",
+      "/src/assets/nigheban/1.jpeg",
+      "/src/assets/nigheban/2.jpeg",
+      "/src/assets/nigheban/3.jpeg",
+      "/src/assets/nigheban/4.jpeg",
+      "/src/assets/nigheban/5.jpeg",
+      "/src/assets/nigheban/6.jpeg",
+      
     ],
     github: "https://github.com/",
     live: "https://example.com/",

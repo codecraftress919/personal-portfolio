@@ -656,6 +656,7 @@ button {
 
 /* About Section */
 .about-section {
+  margin-top: -220px;
   padding: 160px 0 140px;
 }
 
@@ -739,6 +740,7 @@ button {
 
 /* Skills Section */
 .skills-section {
+  margin-top: -200px;
   padding: 100px 0 160px;
 }
 
@@ -793,6 +795,7 @@ button {
 
 /* Projects Section */
 .projects-section {
+  margin-top: -200px;
   padding: 100px 0 160px;
 }
 
@@ -810,6 +813,7 @@ button {
 }
 
 .project-stage {
+  margin-top: -100px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6vw;
@@ -1176,6 +1180,7 @@ button {
    EXPERIENCE SECTION - HORIZONTAL SCROLLING JOB CARDS
    ========================================================================== */
 .experience-section {
+  margin-top: -200px;
   padding: 100px 0 180px;
   overflow: hidden;
 }
@@ -1337,6 +1342,7 @@ button {
 
 /* Contact Section */
 .contact-section {
+  margin-top: -220px;
   min-height: 90vh;
   padding: 120px 0 40px;
   display: flex;

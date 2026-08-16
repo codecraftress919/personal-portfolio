@@ -26,7 +26,7 @@ export default function About() {
         transition={{ duration: 0.8 }}
       >
         I build digital <br />
-        <em>experiences</em> that <br />
+        <em>experiences </em> that <br />
         feel intuitive & alive.
       </motion.h2>
 

@@ -7,7 +7,7 @@ export default function Hero() {
   const socialLinks = [
     {
       name: "Facebook",
-      href: "https://facebook.com",
+      href: "https://www.facebook.com/profile.php?id=61578100910060",
       bgClass: "social-fb",
       icon: (
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -17,7 +17,7 @@ export default function Hero() {
     },
     {
       name: "Instagram",
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/syntax_and_coffee/",
       bgClass: "social-ig",
       icon: (
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -27,7 +27,7 @@ export default function Hero() {
     },
     {
       name: "X (Twitter)",
-      href: "https://x.com",
+      href: "https://x.com/syntaxandcoffee",
       bgClass: "social-x",
       icon: (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -37,7 +37,7 @@ export default function Hero() {
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "www.linkedin.com/in/sadia-sultana-11b04b2b6",
       bgClass: "social-li",
       icon: (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -132,7 +132,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 0.4 }}
       >
         <span className="copyright-text">
-          @2024 Bimala all right reserved
+          @2026 Sadia all right reserved
         </span>
 
         <div className="social-pill-group">

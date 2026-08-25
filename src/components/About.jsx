@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const stats = [
-    ["04+", "Selected Projects"],
+    ["06+", "Selected Projects"],
     ["12+", "Technologies"],
     ["100%", "Dedication"],
   ];

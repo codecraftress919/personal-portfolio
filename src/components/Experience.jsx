@@ -5,10 +5,18 @@ const experienceList = [
   {
     icon: "🏛️",
     badge: "MAY 2025 – PRESENT",
-    role: "Full Stack Developer Intern",
+    role: "Full Stack Developer",
     company: "Government of Pakistan (NACTA HQ)",
     text: "Developing and maintaining full-stack web applications for internal government management systems. Building and optimizing REST APIs for real-time data processing, and implementing role-based access control and secure authentication to protect sensitive government data.",
     tools: "React.js, Node.js, Express.js, REST APIs, JWT Auth",
+  },
+  {
+    icon: "HB",
+    badge: "MAR 2025",
+    role: "Node.js Developer (Team Member)",
+    company: "HelloBob · Remote Client Project",
+    text: "Contributed to a crypto-fintech platform for wallet management, deposits, withdrawals, asset swaps, transaction tracking, and crypto-to-Naira payouts. Built secure Node.js and Express APIs and implemented KYC, two-factor authentication, transaction PINs, device verification, and session-management workflows.",
+    tools: "Node.js, Express.js, MongoDB, REST APIs, KYC, 2FA",
   },
   {
     icon: "🌿",

@@ -4,7 +4,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  Github,
   X,
   Expand,
 } from "lucide-react";
@@ -148,24 +147,18 @@ function ProjectModal({ project, onClose }) {
             ))}
           </div>
 
-          <div className="project-actions">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="link"
-            >
-              <Github size={16} /> GitHub
-            </a>
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="link"
-            >
-              Live Demo <ArrowUpRight size={16} />
-            </a>
-          </div>
+          {project.live && (
+            <div className="project-actions">
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="link"
+              >
+                Live Demo <ArrowUpRight size={16} />
+              </a>
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>
@@ -177,8 +170,14 @@ export default function Projects() {
   const [openProject, setOpenProject] = useState(null);
   const project = projects[active];
 
-  const move = (direction) =>
-    setActive((i) => (i + direction + projects.length) % projects.length);
+  const move = (direction) => {
+    setActive((currentIndex) => {
+      const nextIndex = currentIndex + direction;
+      if (nextIndex < 0) return projects.length - 1;
+      if (nextIndex >= projects.length) return 0;
+      return nextIndex;
+    });
+  };
 
   const onDragEnd = (_, info) => {
     if (Math.abs(info.offset.x) > 100 || Math.abs(info.velocity.x) > 600) {
@@ -232,22 +231,16 @@ export default function Projects() {
                 ))}
               </div>
               <div className="project-actions">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="link"
-                >
-                  <Github size={16} /> GitHub
-                </a>
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="link"
-                >
-                  Live Demo <ArrowUpRight size={16} />
-                </a>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="link"
+                  >
+                    Live Demo <ArrowUpRight size={16} />
+                  </a>
+                )}
                 <button
                   className="btn-view-details"
                   onClick={() => setOpenProject(project)}
@@ -260,14 +253,28 @@ export default function Projects() {
           </AnimatePresence>
 
           <div className="deck-controls">
-            <button onClick={() => move(-1)} data-cursor="link">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.preventDefault();
+                move(-1);
+              }}
+              data-cursor="link"
+            >
               <ArrowLeft size={16} /> Previous
             </button>
             <span>
               {String(active + 1).padStart(2, "0")} /{" "}
               {String(projects.length).padStart(2, "0")}
             </span>
-            <button onClick={() => move(1)} data-cursor="link">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.preventDefault();
+                move(1);
+              }}
+              data-cursor="link"
+            >
               Next <ArrowRight size={16} />
             </button>
           </div>

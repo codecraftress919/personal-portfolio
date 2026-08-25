@@ -37,7 +37,7 @@ export default function Hero() {
     },
     {
       name: "LinkedIn",
-      href: "www.linkedin.com/in/sadia-sultana-11b04b2b6",
+      href: "https://www.linkedin.com/in/sadia-sultana-11b04b2b6",
       bgClass: "social-li",
       icon: (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -113,7 +113,7 @@ export default function Hero() {
             I'm a software developer with hands-on experience building full-stack web and mobile applications. I enjoy turning ideas into clean, functional, and visually engaging digital experiences using modern technologies.</p>
           <div className="hero-btn-group">
             <a
-              href="public/sadia-cv.pdf"
+              href="/sadia-cv.pdf"
               download="Sadia Sultana CV.pdf"
               className="btn-glow-solid"
               data-cursor="link"
@@ -154,5 +154,3 @@ export default function Hero() {
     </section>
   );
 }
-
-// updated code 
